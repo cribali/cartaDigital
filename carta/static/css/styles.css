@@ -5,12 +5,35 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #faf9f9;
+    background: #39ca1c;
     box-shadow:20% black;
 }
 
+.buscador input[type="text"] {
+    /* Estilos para el campo de texto en el formulario de búsqueda */
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.buscador input[type="submit"] {
+    /* Estilos para el botón de envío en el formulario de búsqueda */
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.buscador input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
 img {
-    height:70%;
+    height:30%;
     width: auto;
     display: block;
     margin: auto; /* Centra la imagen horizontalmente */

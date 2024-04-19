@@ -30,6 +30,9 @@ def bebida(request):
 def bodega(request):
     return render(request, 'bodega.html')
 
+def buscar (request):
+    return render(request, "busqueda.html") 
+
 
 
 

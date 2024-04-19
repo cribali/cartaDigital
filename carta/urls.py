@@ -13,6 +13,7 @@ urlpatterns = [
     path('set-language/', views.set_language, name='set_language'),
     path('bebidas/', views.bebida),
     path('bodega/', views.bodega),
+    path('busqueda/', views.buscar)
     
 ]
 if settings.DEBUG:

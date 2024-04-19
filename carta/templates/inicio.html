@@ -7,14 +7,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>'menu digital'</title>
+        <title>Menú digital</title>
         <meta name="Desde aquí podrás ver la carta y elejir la opción más conveniente para vos" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
     </head>
     <body>
-        <p>{% trans traductionPlis %}</p>
-
+        <form class= "buscador" action= "/buscar/"  method= "GET">
+           <input type = "text" nome = "Prod"> 
+           <input  type = "submit" value = "buscar">  
+         
+        </form>
         <form action="{% url 'set_language' %}" method="post" class="language-form">
 
             {% csrf_token %}
@@ -37,6 +41,7 @@
             <li><a href="bebidas">{% trans 'Bebidas' %}</a></li>
             <li><a href="menues">{% trans 'Menúes' %}</a></li>
             <li><a href="cafeteria">{% trans 'Cafetería' %}</a></li>
+            
         </ul>
         
         <img src="{% static 'imagenes/inicio.jpg' %}" alt="Descripción de la imagen">
