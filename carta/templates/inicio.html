@@ -1,0 +1,47 @@
+
+{% load static %}
+{% load i18n %}
+
+
+<html lang= "es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>'menu digital'</title>
+        <meta name="Desde aquí podrás ver la carta y elejir la opción más conveniente para vos" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/styles.css">
+    </head>
+    <body>
+        <p>{% trans traductionPlis %}</p>
+
+        <form action="{% url 'set_language' %}" method="post" class="language-form">
+
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+            <select name="language" id="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% for lang_code, lang_name in LANGUAGES %}
+                    <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+                        {{ lang_name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Aceptar</button>
+        </form>
+        
+    
+        <ul>
+            <li><a href="bodega">{% trans 'Bodega' %}</a></li>
+            <li><a href="bebidas">{% trans 'Bebidas' %}</a></li>
+            <li><a href="menues">{% trans 'Menúes' %}</a></li>
+            <li><a href="cafeteria">{% trans 'Cafetería' %}</a></li>
+        </ul>
+        
+        <img src="{% static 'imagenes/inicio.jpg' %}" alt="Descripción de la imagen">
+        
+       
+    </body>
+</html>
+
