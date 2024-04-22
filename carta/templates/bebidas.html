@@ -1,20 +1,15 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/bebidas.css' %}">
+{% block title %}
+Bebidas
+{% endblock %}
 
-    <title>Bebidas</title>
-</head>
-<body>
-    <h1>Bebidas Disponibles</h1>
-    <ul>
-        {% for bebida in bebidas %}
-            <li>{{ bebida.nombre }} - Precio: {{ bebida.precio }} -  {{ bebida.tipo }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block content %}
+<h1>Bebidas Disponibles</h1>
+<ul>
+    {% for bebida in bebidas %}
+    <li>{{ bebida.nombre }} - Precio: {{ bebida.precio }} - {{ bebida.tipo }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
