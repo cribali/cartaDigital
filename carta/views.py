@@ -34,5 +34,10 @@ def buscar (request):
     return render(request, "busqueda.html") 
 
 
+def menus (request):
+    return render(request, "menus.html")
+
+def cafe (request):
+    return render(request, "cafeteria.html") 
 
 
