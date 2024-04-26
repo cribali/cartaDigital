@@ -11,12 +11,11 @@ urlpatterns = [
     path('comensal/', views.comensal),
     path('tipo/', views.menu),
     path('set-language/', views.set_language, name='set_language'),
-    path('bebidas/', views.bebida),
+    path('bebidas/', views.BebidasController.as_view()),
     path('bodega/', views.bodega),
     path('busqueda/', views.buscar),
     path('menus/', views.menus),
-    path('cafeteria/', views.cafe)
-    
-]
+    path('cafeteria/', views.cafe),
+    ] 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
