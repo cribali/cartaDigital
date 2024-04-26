@@ -1,36 +1,37 @@
 from django.db import models
 
+class Menu(models.Model):
+    pass
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nombre
-
-class Plato(models.Model):
-    nombre = models.CharField(max_length=100)
-    descripcion = models.TextField()
-    precio = models.DecimalField(max_digits=8, decimal_places=2)
-    categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE)
-
-    def __str__(self):
-        return self.nombre
-
-class clasificacion(models.Model):
-    nombre= models.CharField(max_length=50)
     
-    def __str__(self):
-        return self.nombre
-    
-class Bebida(models.Model):
-    nombre= models.CharField(max_length=50)
-    tipo= models.ForeignKey(clasificacion, on_delete= models.CASCADE)   
-    precio= models.DecimalField(max_digits=8, decimal_places=2)
+class Item(models.Model):
+    nombre = models.CharField(max_length=50, null=False)
+    precio = models.DecimalField(null=False)
+    cantidad_stock = models.IntegerField(null=False)
+    categoria = models.ForeignKey(Categoria) 
 
-    def __str__(self):
-        return self.nombre
+class Pedido(models.Model):
+    items = models.ManyToManyField(Item)
+    monto_total = models.DecimalField(null=False)
 
+    def calcular_monto(self):
+        pass
 
+class Cliente(models.Model):
+    nombre = models.CharField(max_length=50, null=False)
+    apellido = models.CharField(max_length=50, null=False)
+    dni = models.IntegerField(max_length=8, unique=True, null=False)
+    fecha_nacimiento = models.DateField(verbose_name="fecha nacimiento")
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
 
+class Reserva(models.Model):
+    pass
 
+class Descuento(models.Model):
+    pass
 # Create your models here.
