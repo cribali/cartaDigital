@@ -13,7 +13,7 @@ class Item(models.Model):
     nombre = models.CharField(max_length=50, null=False)
     precio = models.DecimalField(null=False)
     cantidad_stock = models.IntegerField(null=False)
-    categoria = models.ForeignKey(Categoria) 
+    categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE) 
 
 class Pedido(models.Model):
     items = models.ManyToManyField(Item)

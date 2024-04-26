@@ -23,7 +23,7 @@ def comensal(request):
 def menu(request):
     return render(request,'tipoMenu.html')
 
-class BebidasController(TemplateView):
+class ItemController(TemplateView):
     template_name="bebidas.html"
     def get_context_data(self, **kwargs):
         model = super().get_context_data(**kwargs)
