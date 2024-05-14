@@ -12,15 +12,21 @@ class Categoria(models.Model):
 class Item(models.Model):
     nombre = models.CharField(max_length=50, null=False)
     precio = models.DecimalField(null=False)
+    cantidad_seleccionada = models.IntegerField(null=True)
     cantidad_stock = models.IntegerField(null=False)
-    categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE) 
+    categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE)
 
 class Pedido(models.Model):
     items = models.ManyToManyField(Item)
-    monto_total = models.DecimalField(null=False)
+    monto_total = models.DecimalField(null=False, default=0)
 
     def calcular_monto(self):
-        pass
+        pedido = Pedido.objects.get(pk=pedido.id)
+        monto_total = 0
+        for item in pedido.items.all():
+            monto_total += item.precio * item.cantidad_seleccionada
+        self.monto_total = monto_total
+        pedido.save()
 
 class Cliente(models.Model):
     nombre = models.CharField(max_length=50, null=False)
@@ -30,8 +36,11 @@ class Cliente(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
 
 class Reserva(models.Model):
-    pass
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cantidad_personas = models.IntegerField(null=False)
+    fecha_hora = models.DateTimeField(null=False)
 
 class Descuento(models.Model):
-    pass
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    porcentaje = models.DecimalField(null=True)
 # Create your models here.
