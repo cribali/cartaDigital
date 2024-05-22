@@ -11,14 +11,14 @@ class Categoria(models.Model):
     
 class Item(models.Model):
     nombre = models.CharField(max_length=50, null=False)
-    precio = models.DecimalField(null=False)
+    precio = models.FloatField(null=False)
     cantidad_seleccionada = models.IntegerField(null=True)
     cantidad_stock = models.IntegerField(null=False)
     categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE)
 
 class Pedido(models.Model):
     items = models.ManyToManyField(Item)
-    monto_total = models.DecimalField(null=False, default=0)
+    monto_total = models.FloatField(null=False, default=0)
 
     def calcular_monto(self):
         pedido = Pedido.objects.get(pk=pedido.id)
@@ -42,5 +42,5 @@ class Reserva(models.Model):
 
 class Descuento(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    porcentaje = models.DecimalField(null=True)
+    porcentaje = models.FloatField(null=True)
 # Create your models here.

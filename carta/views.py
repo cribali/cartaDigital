@@ -4,14 +4,6 @@ from django.http import HttpResponseRedirect
 from django.utils.translation import activate
 from django.views.generic import TemplateView
 
-def set_language(request):
-    if request.method == 'POST':
-        language = request.POST.get('language')
-        if language:
-            activate(language)
-    return redirect(request.POST.get('next', '/'))
-
-
 def comensal(request):
     return render(request,'seleccionComensal.html')
 

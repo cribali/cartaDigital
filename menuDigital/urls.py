@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings 
 from django.conf.urls.static import static
-from carta.views import BebidaView, BodegaView, CafeView, BaseView
+from carta.views import BebidaView, BodegaView, CafeView, BaseView, set_language
 
 urlpatterns = [
     path('', BaseView.as_view()),
@@ -12,7 +12,7 @@ urlpatterns = [
     path('bodega/', BodegaView.as_view()),
     # path('comensal/', views.comensal),
     # path('tipo/', views.menu),
-    # path('set-language/', views.set_language, name='set_language'),
+    path('set-language/', set_language, name='set_language'),
     # path('busqueda/', views.buscar),
     # path('menus/', views.menus),
     ]
