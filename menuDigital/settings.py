@@ -136,6 +136,6 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/imagenes/'
-MEDIA_ROOT = BASE_DIR / 'carta/imagenes'
+MEDIA_ROOT = BASE_DIR / 'carta/static/imagenes'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
